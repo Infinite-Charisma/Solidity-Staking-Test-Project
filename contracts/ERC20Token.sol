@@ -100,11 +100,12 @@ contract RewardToken {
     }
 
     function approve(
+        address owner,
         address spender,
         uint256 amount
     ) public returns (bool success) {
         require(amount > 0, "amount must be more than 0");
-        allowed[msg.sender][spender] = amount;
+        allowed[owner][spender] = amount;
         return true;
     }
 
