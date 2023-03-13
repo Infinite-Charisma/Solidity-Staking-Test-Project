@@ -61,11 +61,11 @@ library SafeMath {
     }
 }
 
-contract N2WToken {
+contract RewardToken {
     using SafeMath for uint256;
 
-    string public _name = "nice2win";
-    string public _symbol = "n2w";
+    string public _name = "RewardToken";
+    string public _symbol = "rt";
     uint256 public _totalSupply;
     uint8 public _decimals = 18;
     uint256 public mintingReductionInterval = 7776000; // 3 months would be approximately 3 * 30 * 24 * 60 * 60 = 7776000 seconds.

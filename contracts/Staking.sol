@@ -36,7 +36,7 @@ contract Staking is ReentrancyGuard, Ownable {
 
     function depositRewardToken(
         uint256 _amount
-    ) external payable virtual nonReentrant onlyOwner {
+    ) external virtual nonReentrant onlyOwner {
         _depositRewardToken(_amount);
     }
 

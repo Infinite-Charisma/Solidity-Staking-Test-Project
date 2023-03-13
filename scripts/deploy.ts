@@ -1,18 +1,26 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const unlockTime = currentTimestampInSeconds + 60;
+  // const RewardToken = await ethers.getContractFactory("RewardToken");
+  // const rewardToken = await RewardToken.deploy(10000);
 
-  const lockedAmount = ethers.utils.parseEther("0.001");
+  // await rewardToken.deployed();
 
-  const Lock = await ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
+  // console.log(
+  //   `RewardToken Contract deployed to ${rewardToken.address}`
+  // );
 
-  await lock.deployed();
+  const _rewardTokenAddress = "0x76045CF438C318F7a541CD57e6C7991ADB9215be";
+  const _nftContractAddress = "0xaFD3903C9bC887ed76f025674927c20FE05ead1C";
+  const _stakingVault = "0x9406aCF779A630a1451De816a957DA9322478A48";
+
+  const StakingContract = await ethers.getContractFactory("Staking");
+  const stakingContract = await StakingContract.deploy(_rewardTokenAddress, _nftContractAddress, _stakingVault);
+
+  await stakingContract.deployed();
 
   console.log(
-    `Lock with ${ethers.utils.formatEther(lockedAmount)}ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`
+    `Staking Contract deployed to ${stakingContract.address}`
   );
 }
 
